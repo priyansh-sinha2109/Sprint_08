@@ -1,14 +1,16 @@
 import React from "react";
 import NavBar from "../Components/NavBar";
 import BillBoard from "../Components/BillBoard";
-import MovieCard from "../Components/MovieCard";
+import MovieRow from "../Components/MovieRow";
 
 const Home = () => {
   return (
     <div className="">
       <NavBar />
       <BillBoard />
-      <MovieCard title="Trending Now" />
+      <MovieRow />
+      <MovieRow />
+      <MovieRow />
     </div>
   );
 };

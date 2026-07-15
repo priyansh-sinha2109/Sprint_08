@@ -24,7 +24,7 @@ const BillBoard = () => {
     return () => clearTimeout(timer);
   }, [isMobile]);
   return (
-    <div className="relative h-[56.25vw] w-full overflow-hidden">
+    <div className="relative h-[55vh] md:h-[56.25vw] w-full overflow-hidden">
       {showVideo ? (
         <video
           src={heroVideo}
@@ -38,14 +38,14 @@ const BillBoard = () => {
         <img
           src="https://media.geektherapy.org/wp-content/uploads/2023/08/09145045/LaBrea_S2_KA_16x9_web-1024x576.jpg"
           alt=""
-          className="absolute inset-0 w-full h-[56.25vw] object-cover"
+          className="absolute inset-0 w-full h-full object-cover"
         />
       )}
-      <div className="absolute top-[30%] md:top-[40%] ml-4 md:ml-16">
-        <p className="text-white text-1xl md:text-5xl h-full lg:text-6xl font-bold drop-Shadow-xl">
+      <div className="absolute top-[32%] md:top-[32%] ml-4 md:ml-16">
+        <p className="text-white text-4xl md:text-6xl h-full lg:text-6xl font-bold drop-Shadow-xl">
           LA BREA
         </p>
-        <div className="flex flex-row gap-3 mt-4 md:mt-2 lg:mt-6 items-center text-white text-2xl">
+        <div className="flex flex-row gap-3 mt-4 md:mt-2 lg:mt-6 items-center text-white text-sm md:text-lg">
           <span>Sci-Fi</span>
           <hr className="bg-gray-400 rounded-full h-2 w-2 " />
           <span>2022</span>
@@ -54,7 +54,7 @@ const BillBoard = () => {
           <hr className="bg-gray-400 rounded-full h-2 w-2 " />
           <span>A</span>
         </div>
-        <p className="text-white text-md md:text-lg mt-3 md:mt-8 w-[90%] md:w-[80%] lg:w-[50%] drop-shadow-xl">
+        <p className="text-white text-xs md:text-lg mt-3 md:mt-8 w-[80%] md:w-[55%] lg:w-[50%] drop-shadow-xl">
           When the Earth Spilts open ,strangers fall down a sinkhole into an
           ancient era brimming with secrets and deadly creatures.
         </p>

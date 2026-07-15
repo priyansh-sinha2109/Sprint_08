@@ -1,14 +1,14 @@
 import React from "react";
-
-const MovieCard = ({title}) => {
+const MovieCard = ({ name, poster, year, rating, genre }) => {
   return (
-    <div className="px-4 md:px-12 mt-4 space-y-8 ">
+    <div className="group">
       <div>
-        <p className="text-white text-md md:text-xl lg:text-2xl font-semibold mb-4">
-          {title}
-        </p>
-        <div className="grid grid-cols-4 gap-2">
-
+        <div className="group bg-zinc-900 relative w-full aspect-[2/3] overflow-hidden rounded-md">
+          <img
+            src={poster}
+            alt=""
+            className="h-full w-full object-center object-cover"
+          />
         </div>
       </div>
     </div>
