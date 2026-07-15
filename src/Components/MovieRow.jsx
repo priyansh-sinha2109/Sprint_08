@@ -10,7 +10,7 @@ const MovieRow = () => {
       <Swiper slidesPerView={"auto"} spaceBetween={10} className="mySwiper">
         {movies.map((object) => {
           return (
-            <SwiperSlide key={object.id} className="max-w-72">
+            <SwiperSlide key={object.id} className="max-w-72 ">
               <MovieCard
                 name={object.name}
                 poster={object.poster}

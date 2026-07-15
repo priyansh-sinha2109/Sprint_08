@@ -1,12 +1,11 @@
-import image from "../assets/mirrorflix-logo.jpg";
 const movies = [
   {
     id: 1,
     name: "Stranger Things",
     poster:
       "https://i.pinimg.com/736x/73/84/e6/7384e63ac1fd7dcb8a355aadb8c9dd0c.jpg",
-    year: "2025",
-    rating: "5⭐",
+    year: " 2025 ",
+    rating: " 3.7 ",
     genre: "Sci-Fi",
   },
   {
@@ -15,7 +14,7 @@ const movies = [
     poster:
       "https://i.pinimg.com/736x/73/84/e6/7384e63ac1fd7dcb8a355aadb8c9dd0c.jpg",
     year: "2025",
-    rating: "5⭐",
+    rating: "9.1",
     genre: "Sci-Fi",
   },
   {
@@ -24,7 +23,7 @@ const movies = [
     poster:
       "https://i.pinimg.com/736x/73/84/e6/7384e63ac1fd7dcb8a355aadb8c9dd0c.jpg",
     year: "2025",
-    rating: "5⭐",
+    rating: "3.1",
     genre: "Sci-Fi",
   },
   {
@@ -33,7 +32,7 @@ const movies = [
     poster:
       "https://i.pinimg.com/736x/73/84/e6/7384e63ac1fd7dcb8a355aadb8c9dd0c.jpg",
     year: "2025",
-    rating: "5⭐",
+    rating: "6.5",
     genre: "Sci-Fi",
   },
   {
@@ -42,7 +41,7 @@ const movies = [
     poster:
       "https://i.pinimg.com/736x/73/84/e6/7384e63ac1fd7dcb8a355aadb8c9dd0c.jpg",
     year: "2025",
-    rating: "5⭐",
+    rating: "8.7",
     genre: "Sci-Fi",
   },
   {
@@ -51,7 +50,7 @@ const movies = [
     poster:
       "https://i.pinimg.com/736x/73/84/e6/7384e63ac1fd7dcb8a355aadb8c9dd0c.jpg",
     year: "2025",
-    rating: "5⭐",
+    rating: "2.5",
     genre: "Sci-Fi",
   },
 ];
