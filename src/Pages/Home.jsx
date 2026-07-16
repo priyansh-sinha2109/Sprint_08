@@ -1,35 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import NavBar from "../Components/NavBar";
 import BillBoard from "../Components/BillBoard";
 import MovieRow from "../Components/MovieRow";
 import Footer from "../Components/Footer";
 import SearchResults from "../Components/SearchResults";
-import options from "../Data/options";
+import debounce from "../Utils/Debounce";
 
 const Home = () => {
   const [search, setSearch] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [activeQuery, setActiveQuery] = useState("");
   const [showSearch, setShowSearch] = useState(false);
 
+  const debouncedSearch = useCallback(
+    debounce((value) => {
+      if (value.trim() === "") {
+        setShowSearch(false);
+        setActiveQuery("");
+        return;
+      }
+      setActiveQuery(value);
+      setShowSearch(true);
+    }, 500),
+    [],
+  );
+
+  useEffect(() => {
+    debouncedSearch(search);
+  }, [search, debouncedSearch]);
+
   const handleSearch = () => {
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?query=${encodeURIComponent(
-        search,
-      )}&language=en-US&page=1`,
-      options,
-    )
-      .then((res) => res.json())
-      .then((res) => {
-        setSearchResults(res.results || []);
-        setShowSearch(true);
-      })
-      .catch((err) => console.error(err));
+    if (search.trim() === "") return;
+    setActiveQuery(search);
+    setShowSearch(true);
   };
 
   const closeSearch = () => {
     setShowSearch(false);
     setSearch("");
-    setSearchResults([]);
+    setActiveQuery("");
   };
 
   return (
@@ -43,11 +51,7 @@ const Home = () => {
       />
 
       {showSearch ? (
-        <SearchResults
-          results={searchResults}
-          query={search}
-          onClose={closeSearch}
-        />
+        <SearchResults query={activeQuery} onClose={closeSearch} />
       ) : (
         <div>
           <BillBoard />
