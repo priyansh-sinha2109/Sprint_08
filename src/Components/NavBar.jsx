@@ -116,6 +116,7 @@ const NavBar = ({ search, setSearch, onSearch, showSearch, setShowSearch }) => {
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
                 alt=""
+                loading="lazy"
               />
             </div>
             <IoChevronDown

@@ -27,6 +27,7 @@ const MovieCard = ({
           <img
             src={`https://image.tmdb.org/t/p/w500/${poster}`}
             alt={name}
+            loading="lazy"
             className="h-full w-full object-cover object-center"
           />
         </div>

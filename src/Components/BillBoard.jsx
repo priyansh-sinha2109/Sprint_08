@@ -117,6 +117,7 @@ const BillBoard = () => {
         <img
           src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
           alt={movie.title}
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover"
         />
       )}
