@@ -38,11 +38,17 @@ const NavBar = ({ search, setSearch, onSearch, showSearch, setShowSearch }) => {
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && search.trim() !== "") {
-      onSearch();
-      setShowMobileSearch(false);
+      runSearch();
     }
   };
 
+  const runSearch = () => {
+    if (search.trim() === "") return;
+    onSearch();
+    setShowMobileSearch(false);
+  };
+
+  // on small screens, tapping the icon opens an input instead of firing search directly
   const handleSearchIconClick = () => {
     if (window.innerWidth < 1024) {
       setShowMobileSearch((current) => !current);
@@ -119,6 +125,7 @@ const NavBar = ({ search, setSearch, onSearch, showSearch, setShowSearch }) => {
           </div>
         </div>
       </div>
+
       {showMobileSearch && (
         <div className="lg:hidden flex flex-row items-center gap-2 px-4 py-3 bg-zinc-900">
           <input
@@ -130,6 +137,12 @@ const NavBar = ({ search, setSearch, onSearch, showSearch, setShowSearch }) => {
             className="flex-1 bg-black border border-gray-500 text-white px-3 py-2 rounded-md outline-none focus:border-white"
             placeholder="Search Movies..."
           />
+          <button
+            onClick={runSearch}
+            className="bg-red-600 text-white px-4 py-2 rounded-md text-sm font-semibold cursor-pointer"
+          >
+            Go
+          </button>
           <IoClose
             className="text-white text-2xl cursor-pointer"
             onClick={closeMobileSearch}
