@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { BsStars } from "react-icons/bs";
 import { GoogleGenAI } from "@google/genai";
 
+
 const ai = new GoogleGenAI({
   apiKey: import.meta.env.VITE_GEMINI_KEY,
 });
