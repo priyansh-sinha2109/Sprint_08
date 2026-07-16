@@ -5,6 +5,7 @@ import MovieRow from "../Components/MovieRow";
 import Footer from "../Components/Footer";
 import SearchResults from "../Components/SearchResults";
 import debounce from "../Utils/Debounce";
+import MoodMatcher from "../Components/MoodMatcher";
 
 const Home = () => {
   const [search, setSearch] = useState("");
@@ -40,6 +41,11 @@ const Home = () => {
     setActiveQuery("");
   };
 
+  const handleMoodResult = (title) => {
+    setActiveQuery(title);
+    setShowSearch(true);
+  };
+
   return (
     <div>
       <NavBar
@@ -50,6 +56,9 @@ const Home = () => {
         setShowSearch={setShowSearch}
       />
 
+      <div className="fixed top-20 right-4 md:right-16 z-40">
+        <MoodMatcher onMoodResult={handleMoodResult} />
+      </div>
       {showSearch ? (
         <SearchResults query={activeQuery} onClose={closeSearch} />
       ) : (

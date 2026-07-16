@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { CiCircleInfo } from "react-icons/ci";
-import { CiHeart } from "react-icons/ci";
+import { useEffect, useState } from "react";
+import { CiCircleInfo, CiHeart } from "react-icons/ci";
+import options from "../Data/options";
 
 const GENRE_MAP = {
   28: "Action",
@@ -30,23 +30,12 @@ const BillBoard = () => {
   const [movie, setMovie] = useState(null);
   const [trailerKey, setTrailerKey] = useState(null);
 
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1MmMxNDg3YzRiZDVmMmU0YjQ0ODkyOTY4N2QyNzA3YSIsIm5iZiI6MTc4NDAzMjk5Ni4xMzIsInN1YiI6IjZhNTYyZWU0M2NmNDYxZjk1ZWRhZTczZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.C05x8k31rM6KfsL5w8PNZqTIOoJURb1iQtPTvJtenSQ",
-    },
-  };
-
-  // Track screen size
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Fetch a random upcoming movie
   useEffect(() => {
     fetch(
       "https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1",
@@ -62,7 +51,6 @@ const BillBoard = () => {
       .catch((err) => console.error(err));
   }, []);
 
-  // Once we have a movie, fetch its trailer (YouTube key)
   useEffect(() => {
     if (!movie) return;
     fetch(
@@ -82,7 +70,6 @@ const BillBoard = () => {
       .catch((err) => console.error(err));
   }, [movie]);
 
-  // Show video after 2s delay, only on desktop, and only if a trailer exists
   useEffect(() => {
     if (isMobile || !trailerKey) return;
     const timer = setTimeout(() => {

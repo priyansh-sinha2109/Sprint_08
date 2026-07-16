@@ -1,6 +1,8 @@
-import React from "react";
-import { FaPlay, FaPlus, FaChevronDown } from "react-icons/fa";
-import options from "../Data/options";
+import { useState, useEffect } from "react";
+import { FaPlay, FaChevronDown } from "react-icons/fa";
+import { CiHeart } from "react-icons/ci";
+import { IoHeart } from "react-icons/io5";
+import { addFavorite, removeFavorite, isFavorite } from "../Utils/favourite";
 
 const MovieCard = ({
   name,
@@ -9,8 +11,28 @@ const MovieCard = ({
   rating,
   genre,
   description,
-  title,
+  movie,
 }) => {
+  const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    if (movie?.id) {
+      setLiked(isFavorite(movie.id));
+    }
+  }, [movie]);
+
+  const toggleFavorite = () => {
+    if (!movie) return;
+
+    if (liked) {
+      removeFavorite(movie.id);
+      setLiked(false);
+    } else {
+      addFavorite(movie);
+      setLiked(true);
+    }
+  };
+
   return (
     <div className="group relative w-full">
       <div
@@ -18,7 +40,6 @@ const MovieCard = ({
         transition-transform duration-300 ease-out
         md:group-hover:scale-80 md:group-hover:-translate-y-6 md:group-hover:z-20"
       >
-        {/* Poster */}
         <div
           className="relative w-full aspect-[2/3] overflow-hidden rounded-md bg-zinc-800
           transition-all duration-300 ease-out
@@ -30,6 +51,18 @@ const MovieCard = ({
             loading="lazy"
             className="h-full w-full object-cover object-center"
           />
+
+          <button
+            aria-label="Add to Favorites"
+            onClick={toggleFavorite}
+            className="md:hidden absolute top-2 right-2 w-7 h-7 flex items-center justify-center rounded-full bg-black/60 cursor-pointer"
+          >
+            {liked ? (
+              <IoHeart size={14} className="text-red-500" />
+            ) : (
+              <CiHeart size={16} className="text-white" />
+            )}
+          </button>
         </div>
 
         <div className="mt-2 px-0.5 md:group-hover:hidden">
@@ -39,7 +72,6 @@ const MovieCard = ({
           </p>
         </div>
 
-        {/* Hover panel*/}
         <div
           className="hidden md:block absolute left-0 top-full w-full z-20
           bg-zinc-900 rounded-b-md shadow-xl p-3
@@ -55,10 +87,15 @@ const MovieCard = ({
               <FaPlay size={12} className="ml-0.5" />
             </button>
             <button
-              aria-label="Add to Wishlist"
+              aria-label="Add to Favorites"
+              onClick={toggleFavorite}
               className="w-8 h-8 flex items-center justify-center rounded-full border-2 border-zinc-400 text-white hover:border-white transition cursor-pointer"
             >
-              <FaPlus size={12} />
+              {liked ? (
+                <IoHeart size={14} className="text-red-500" />
+              ) : (
+                <CiHeart size={16} />
+              )}
             </button>
             <button
               aria-label="More Info"
