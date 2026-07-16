@@ -22,6 +22,7 @@ const MovieRow = ({ title, category }) => {
           return (
             <SwiperSlide key={object.id} className="max-w-72 ">
               <MovieCard
+                movie={object}
                 name={object.title || object.name}
                 poster={object.poster_path}
                 year={object.release_date?.slice(0, 4)}

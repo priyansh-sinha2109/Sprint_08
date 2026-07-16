@@ -1,6 +1,10 @@
 import React from "react";
+import { useState, useEffect } from "react";
 import { FaPlay, FaPlus, FaChevronDown } from "react-icons/fa";
 import options from "../Data/options";
+import { CiHeart } from "react-icons/ci";
+import { IoHeart } from "react-icons/io5";
+import { addFavorite, removeFavorite, isFavorite } from "../utils/favourite";
 
 const MovieCard = ({
   name,
@@ -10,7 +14,27 @@ const MovieCard = ({
   genre,
   description,
   title,
+  movie,
 }) => {
+  const [liked, setLiked] = useState(false);
+
+  useEffect(() => {
+    if (movie?.id) {
+      setLiked(isFavorite(movie.id));
+    }
+  }, [movie]);
+
+  const toggleFavorite = () => {
+    if (!movie) return;
+
+    if (liked) {
+      removeFavorite(movie.id);
+      setLiked(false);
+    } else {
+      addFavorite(movie);
+      setLiked(true);
+    }
+  };
   return (
     <div className="group relative w-full">
       <div

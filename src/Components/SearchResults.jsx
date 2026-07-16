@@ -9,9 +9,7 @@ const SearchResults = ({ query, onClose }) => {
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
 
-
   const bottomRef = useRef(null);
-
 
   useEffect(() => {
     setResults([]);
@@ -19,7 +17,6 @@ const SearchResults = ({ query, onClose }) => {
     setHasMore(true);
   }, [query]);
 
- 
   useEffect(() => {
     if (!query) return;
 
@@ -35,7 +32,6 @@ const SearchResults = ({ query, onClose }) => {
       .then((res) => {
         const newMovies = res.results || [];
 
-       
         if (page === 1) {
           setResults(newMovies);
         } else {
@@ -55,7 +51,6 @@ const SearchResults = ({ query, onClose }) => {
       });
   }, [query, page]);
 
-
   useEffect(() => {
     if (!hasMore || loading) return;
 
@@ -73,7 +68,6 @@ const SearchResults = ({ query, onClose }) => {
       observer.observe(currentBottom);
     }
 
-   
     return () => {
       if (currentBottom) {
         observer.unobserve(currentBottom);
@@ -101,6 +95,7 @@ const SearchResults = ({ query, onClose }) => {
         {results.map((movie) => (
           <MovieCard
             key={movie.id}
+            movie={movie}
             name={movie.title || movie.name}
             poster={movie.poster_path}
             year={movie.release_date?.slice(0, 4)}
@@ -116,7 +111,6 @@ const SearchResults = ({ query, onClose }) => {
         <p className="text-zinc-400 text-center py-6">Loading more movies...</p>
       )}
 
-     
       <div ref={bottomRef} className="h-10"></div>
     </div>
   );

@@ -3,6 +3,7 @@ import NavBar from "../Components/NavBar";
 import BillBoard from "../Components/BillBoard";
 import MovieRow from "../Components/MovieRow";
 import Footer from "../Components/Footer";
+import MoodMatcher from "../Components/MoodMatcher";
 import SearchResults from "../Components/SearchResults";
 import debounce from "../Utils/Debounce";
 
@@ -40,6 +41,10 @@ const Home = () => {
     setActiveQuery("");
   };
 
+  const handleMoodResult = (title) => {
+    setSearch(title);
+  };
+
   return (
     <div>
       <NavBar
@@ -49,6 +54,10 @@ const Home = () => {
         showSearch={showSearch}
         setShowSearch={setShowSearch}
       />
+
+      <div className="fixed bottom-6 right-6 z-50">
+        <MoodMatcher onMoodResult={handleMoodResult} />
+      </div>
 
       {showSearch ? (
         <SearchResults query={activeQuery} onClose={closeSearch} />
