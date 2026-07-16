@@ -1,5 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans+Flex:opsz,wght@6..144,1..1000&family=Roboto:ital,wght@0,100..900;1,100..900&family=Tektur:wght@400..900&family=Yuyu+Short&display=swap");
 @import "tailwindcss";
 
+* {
+  font-family: "Roboto", sans-serif;
+}
 html,
 body {
   scroll-behavior: smooth;

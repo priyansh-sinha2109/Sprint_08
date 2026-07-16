@@ -1,13 +1,22 @@
 import React from "react";
 import { FaPlay, FaPlus, FaChevronDown } from "react-icons/fa";
+import options from "../Data/options";
 
-const MovieCard = ({ name, poster, year, rating, genre, description }) => {
+const MovieCard = ({
+  name,
+  poster,
+  year,
+  rating,
+  genre,
+  description,
+  title,
+}) => {
   return (
     <div className="group relative w-full">
       <div
         className="relative w-full origin-top
         transition-transform duration-300 ease-out
-        md:group-hover:scale-90 md:group-hover:-translate-y-6 md:group-hover:z-20"
+        md:group-hover:scale-80 md:group-hover:-translate-y-6 md:group-hover:z-20"
       >
         {/* Poster */}
         <div
@@ -16,7 +25,7 @@ const MovieCard = ({ name, poster, year, rating, genre, description }) => {
           md:group-hover:rounded-b-none md:group-hover:shadow-2xl md:group-hover:shadow-black/70"
         >
           <img
-            src={poster}
+            src={`https://image.tmdb.org/t/p/w500/${poster}`}
             alt={name}
             className="h-full w-full object-cover object-center"
           />
