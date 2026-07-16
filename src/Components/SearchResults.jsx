@@ -111,7 +111,6 @@ const SearchResults = ({ query, onClose }) => {
         ))}
       </div>
 
-      {/* loader text while next page is loading */}
       {loading && (
         <p className="text-zinc-400 text-center py-6">Loading more movies...</p>
       )}

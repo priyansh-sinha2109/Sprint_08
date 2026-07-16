@@ -48,7 +48,7 @@ const NavBar = ({ search, setSearch, onSearch, showSearch, setShowSearch }) => {
     setShowMobileSearch(false);
   };
 
-  // on small screens, tapping the icon opens an input instead of firing search directly
+
   const handleSearchIconClick = () => {
     if (window.innerWidth < 1024) {
       setShowMobileSearch((current) => !current);

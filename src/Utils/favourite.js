@@ -12,7 +12,6 @@ export function isFavorite(movieId) {
 
 export function addFavorite(movie) {
   const favorites = getFavorites();
-  // avoid adding the same movie twice
   if (favorites.some((item) => item.id === movie.id)) return favorites;
   const updated = [...favorites, movie];
   localStorage.setItem(STORAGE_KEY, JSON.stringify(updated));

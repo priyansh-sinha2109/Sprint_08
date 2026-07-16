@@ -11,7 +11,7 @@ const MoodMatcher = ({ onMoodResult }) => {
   const [mood, setMood] = useState("");
   const [loading, setLoading] = useState(false);
 
-  // asks Gemini: "given this mood, give me one movie title"
+
   const handleMoodSearch = async () => {
     if (mood.trim() === "" || loading) return;
 
@@ -26,7 +26,6 @@ const MoodMatcher = ({ onMoodResult }) => {
       const title = response.text?.trim();
 
       if (title) {
-        // this quietly passes the title into the normal TMDB search flow
         onMoodResult(title);
         setMood("");
       }
